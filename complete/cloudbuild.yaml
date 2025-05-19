@@ -9,3 +9,5 @@ steps:
   automapSubstitutions: true
 images:
 - 'europe-west1-docker.pkg.dev/$PROJECT_ID/gs-repository/gs-rest-service:v0.0.1'
+options:
+  logging: CLOUD_LOGGING_ONLY
