@@ -2,12 +2,16 @@ steps:
 - name: 'maven:3-openjdk-17'
   entrypoint: 'mvn'
   args: ['clean', 'install']
+  dir: 'complete'
 
 - name: 'gcr.io/cloud-builders/docker'
   script: |
     docker build -t europe-west1-docker.pkg.dev/$PROJECT_ID/gs-repository/gs-rest-service:v0.0.1 .
   automapSubstitutions: true
+  dir: 'complete'
+  
 images:
 - 'europe-west1-docker.pkg.dev/$PROJECT_ID/gs-repository/gs-rest-service:v0.0.1'
+
 options:
   logging: CLOUD_LOGGING_ONLY
