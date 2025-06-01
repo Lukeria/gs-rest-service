@@ -4,12 +4,25 @@ steps:
   args: ['clean', 'install']
   dir: 'complete'
 
+# Build Doker image
 - name: 'gcr.io/cloud-builders/docker'
   script: |
     docker build -t europe-west1-docker.pkg.dev/$PROJECT_ID/gs-repository/gs-rest-service:v0.0.1 .
   automapSubstitutions: true
   dir: 'complete'
-  
+
+# Deploy to GKE
+- name: 'gcr.io/cloud-builders/gke-deploy'
+  args:
+    - run
+    # tells gke-deploy to look at all .yaml files in that directory.
+    - --filename=k8s/
+    - --image=europe-west1-docker.pkg.dev/$PROJECT_ID/gs-repository/gs-rest-service:v0.0.1
+    - --location=europe-west1
+    - --cluster=gs-rest-service
+
+# When an image is listed under 'images:'' Cloud Build automatically pushes the image 
+# to Artifact Registry or Container Registry after the docker build step finishes
 images:
 - 'europe-west1-docker.pkg.dev/$PROJECT_ID/gs-repository/gs-rest-service:v0.0.1'
 
