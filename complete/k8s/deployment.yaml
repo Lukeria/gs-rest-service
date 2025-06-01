@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: gs-rest-service
-        image: europe-west1-docker.pkg.dev/onyx-glider-460209-a9/gs-repository/gs-rest-service:v0.0.1
+        image: europe-west1-docker.pkg.dev/onyx-glider-460209-a9/gs-repository/gs-rest-service:<TAG>
         ports:
         - containerPort: 8080
         imagePullPolicy: Always
