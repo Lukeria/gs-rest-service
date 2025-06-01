@@ -18,7 +18,7 @@ steps:
     # tells gke-deploy to look at all .yaml files in that directory.
     - --filename=k8s/
     - --image=europe-west1-docker.pkg.dev/$PROJECT_ID/gs-repository/gs-rest-service:v0.0.1
-    - --location=europe-west1
+    - --location=europe-west1-b
     - --cluster=gs-rest-service
 
 # When an image is listed under 'images:'' Cloud Build automatically pushes the image 
