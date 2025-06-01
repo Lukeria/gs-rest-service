@@ -13,10 +13,11 @@ steps:
 
 # Deploy to GKE
 - name: 'gcr.io/cloud-builders/gke-deploy'
+  dir: complete
   args:
     - run
     # tells gke-deploy to look at all .yaml files in that directory.
-    - --filename=complete/k8s/
+    - --filename=k8s/
     - --image=europe-west1-docker.pkg.dev/$PROJECT_ID/gs-repository/gs-rest-service:v0.0.1
     - --location=europe-west1-b
     - --cluster=gs-rest-service
