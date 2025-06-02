@@ -51,7 +51,7 @@ spec:
             "--structured-logs",
             "--credentials-file=/secrets/key.json",
             "--port=3306",
-            "YOUR_PROJECT_ID:REGION:INSTANCE_ID"
+            "onyx-glider-460209-a9:europe-west1:rs-rest-service-db"
           ]
         resources:
           requests:
