@@ -46,11 +46,15 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<fork>true</fork>
+					<!-- Remove skip -->
+				</configuration>
 				<executions>
 					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
+					<goals>
+						<goal>repackage</goal>
+					</goals>
 					</execution>
 				</executions>
 			</plugin>
