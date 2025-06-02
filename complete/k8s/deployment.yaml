@@ -17,6 +17,13 @@ spec:
       containers:
       - name: gs-rest-service
         image: europe-west1-docker.pkg.dev/onyx-glider-460209-a9/gs-repository/gs-rest-service:v0.0.1
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "250m"
+            memory: "256Mi"
         ports:
         - containerPort: 8080
         imagePullPolicy: Always
@@ -46,10 +53,18 @@ spec:
             "--port=3306",
             "YOUR_PROJECT_ID:REGION:INSTANCE_ID"
           ]
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "250m"
+            memory: "256Mi"
         volumeMounts:
         - name: cloudsql-instance-credentials
           mountPath: /secrets
           readOnly: true
+        
 
       volumes:
       - name: cloudsql-instance-credentials
