@@ -17,13 +17,6 @@ spec:
       containers:
       - name: gs-rest-service
         image: europe-west1-docker.pkg.dev/onyx-glider-460209-a9/gs-repository/gs-rest-service:v0.0.1
-#        resources:
-#          requests:
-#            cpu: "100m"
-#            memory: "128Mi"
-#          limits:
-#            cpu: "250m"
-#            memory: "256Mi"
         ports:
         - containerPort: 8080
         imagePullPolicy: Always
@@ -42,31 +35,3 @@ spec:
 #            secretKeyRef:
 #              name: db-credentials
 #              key: password
-
-#      - name: cloudsql-proxy
-#        image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.8.0
-#        args:
-#          [
-#            "--private-ip",
-#            "--structured-logs",
-#            "--credentials-file=/secrets/key.json",
-#            "--port=3306",
-#            "onyx-glider-460209-a9:europe-west1:rs-rest-service-db"
-#          ]
-#        resources:
-#          requests:
-#            cpu: "100m"
-#            memory: "128Mi"
-#          limits:
-#            cpu: "250m"
-#            memory: "256Mi"
-#        volumeMounts:
-#        - name: cloudsql-instance-credentials
-#          mountPath: /secrets
-#          readOnly: true
-#
-#
-#      volumes:
-#      - name: cloudsql-instance-credentials
-#        secret:
-#          secretName: cloudsql-sa-credentials
