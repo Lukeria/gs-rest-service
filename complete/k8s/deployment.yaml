@@ -43,30 +43,30 @@ spec:
               name: db-credentials
               key: password
 
-      - name: cloudsql-proxy
-        image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.8.0
-        args:
-          [
-            "--private-ip",
-            "--structured-logs",
-            "--credentials-file=/secrets/key.json",
-            "--port=3306",
-            "onyx-glider-460209-a9:europe-west1:rs-rest-service-db"
-          ]
-        resources:
-          requests:
-            cpu: "100m"
-            memory: "128Mi"
-          limits:
-            cpu: "250m"
-            memory: "256Mi"
-        volumeMounts:
-        - name: cloudsql-instance-credentials
-          mountPath: /secrets
-          readOnly: true
-        
-
-      volumes:
-      - name: cloudsql-instance-credentials
-        secret:
-          secretName: cloudsql-sa-credentials
+#      - name: cloudsql-proxy
+#        image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.8.0
+#        args:
+#          [
+#            "--private-ip",
+#            "--structured-logs",
+#            "--credentials-file=/secrets/key.json",
+#            "--port=3306",
+#            "onyx-glider-460209-a9:europe-west1:rs-rest-service-db"
+#          ]
+#        resources:
+#          requests:
+#            cpu: "100m"
+#            memory: "128Mi"
+#          limits:
+#            cpu: "250m"
+#            memory: "256Mi"
+#        volumeMounts:
+#        - name: cloudsql-instance-credentials
+#          mountPath: /secrets
+#          readOnly: true
+#
+#
+#      volumes:
+#      - name: cloudsql-instance-credentials
+#        secret:
+#          secretName: cloudsql-sa-credentials
